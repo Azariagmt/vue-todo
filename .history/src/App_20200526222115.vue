@@ -3,18 +3,20 @@
 
     <v-content>
       <todo-list></todo-list>
-      <router-view></router-view>
+      <rout>
     </v-content>
   </v-app>
 </template>
 
 <script>
+import HelloWorld from "./components/HelloWorld";
 import TodoList from "./components/TodoList";
 
 export default {
   name: "App",
 
   components: {
+    HelloWorld,
     TodoList
   },
 
