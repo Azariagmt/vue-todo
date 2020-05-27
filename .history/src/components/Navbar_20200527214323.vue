@@ -7,14 +7,10 @@
             </v-toolbar-title>
             <v-btn>
                 <v-icon left>dashboard</v-icon>
-                <span>Dashboard</span>
+                <span>
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"></v-btn>
-            <v-btn>
-                <v-icon></v-icon>
-                <span>Activities</span>
-            </v-btn>
             <v-btn depressed flat color="grey">
                 <v-icon left>account_circle</v-icon>
                 <span>login</span>
