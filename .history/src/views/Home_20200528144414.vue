@@ -2,28 +2,25 @@
   <div class="home">
     <v-container fluid>
       <v-layout row wrap>
-
-        <v-flex md3 class="d-none d-sm-none d-md-flex">
-          <v-container>
-<SingleDatePicker />
-          </v-container>
-          
-        </v-flex>
-
-        <v-flex md6>
-          <v-layout column xs12 md8 lg8>
+        
+          <v-flex md3>
+            <SingleDatePicker />
+          </v-flex>
+      
+         <v-flex md8>
+        <v-layout column xs12 md8 lg8>
+       
             <v-card flat>
               <todo-list></todo-list>
             </v-card>
-          </v-layout>
-        </v-flex>
-        <v-flex md3 class="d-none d-sm-none d-md-flex">
-          <v-container>
- <right-side />
-          </v-container>
          
-        </v-flex>
-      </v-layout>
+        </v-layout>
+         </v-flex>
+          <v-flex md2>
+            <right-side />
+          </v-flex>
+        </v-layout>
+      
     </v-container>
   </div>
 </template>
@@ -45,5 +42,5 @@ export default {
 </script>
 
 <style scoped>
-@import "~vue-single-date-picker/dist/vue-single-date-picker.css";
+@import '~vue-single-date-picker/dist/vue-single-date-picker.css';
 </style>

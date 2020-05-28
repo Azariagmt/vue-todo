@@ -19,9 +19,9 @@
         </v-flex>
         <v-flex md3 class="d-none d-sm-none d-md-flex">
           <v-container>
- <right-side />
+            
           </v-container>
-         
+          <right-side />
         </v-flex>
       </v-layout>
     </v-container>

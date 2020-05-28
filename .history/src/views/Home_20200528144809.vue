@@ -2,12 +2,9 @@
   <div class="home">
     <v-container fluid>
       <v-layout row wrap>
-
+v-lay
         <v-flex md3 class="d-none d-sm-none d-md-flex">
-          <v-container>
-<SingleDatePicker />
-          </v-container>
-          
+          <SingleDatePicker />
         </v-flex>
 
         <v-flex md6>
@@ -18,10 +15,7 @@
           </v-layout>
         </v-flex>
         <v-flex md3 class="d-none d-sm-none d-md-flex">
-          <v-container>
- <right-side />
-          </v-container>
-         
+          <right-side />
         </v-flex>
       </v-layout>
     </v-container>
