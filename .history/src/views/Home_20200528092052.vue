@@ -1,0 +1,15 @@
+<template>
+  <div class="home">
+
+   
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import 
+
+export default {
+  name: "Home",
+};
+</script>
