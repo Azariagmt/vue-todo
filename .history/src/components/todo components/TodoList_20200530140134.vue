@@ -6,7 +6,7 @@
           <div class="text-center">
             <v-dialog v-model="dialog" width="500">
               <template v-slot:activator="{ on }">
-                <v-btn class="deep-purple mb-5" dark v-on="on">Add New todo</v-btn>
+                <v-btn class="primary mb-5" dark v-on="on">Add New todo</v-btn>
               </template>
               <v-card>
                 <v-card-title class="headline grey lighten-2" primary-title>Add a New todo</v-card-title>
@@ -24,7 +24,7 @@
                       </template>
                       <v-date-picker v-model="due"></v-date-picker>
                     </v-menu>
-                    <v-btn flat class="deep-purple white--text" @click="addTodo">Add todo</v-btn>
+                    <v-btn flat class="success" @click="addTodo">Add todo</v-btn>
                   </v-form>
                 </v-card-text>
               </v-card>
@@ -72,7 +72,7 @@
                   flat
                   small
                   dark
-                  color="purple"
+                  color="pink"
                   @click="removeTodo(index)"
                 >
                   <v-icon>delete_outline</v-icon>
@@ -120,7 +120,7 @@ export default {
   data: function() {
     return {
       newTodo: "",
-      idForTodo: 1,
+      idForTodo: 3,
       beforeEditCache: "",
       filter: "all",
       due: null,
@@ -130,14 +130,14 @@ export default {
           title: "krambababam",
           completed: false,
           editing: false,
-          due: "30th May 2020"
+          due: "05-20-2020"
         },
         {
           id: 2,
           title: "task 2",
           completed: false,
           editing: false,
-          due: "20th May 2030"
+          due: "20th jan 2030"
         }
       ]
     };

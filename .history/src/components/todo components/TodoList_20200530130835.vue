@@ -3,33 +3,18 @@
     <v-container class="ma-5 pa-5">
       <v-layout wrap row>
         <v-flex xs12 md12>
-          <div class="text-center">
-            <v-dialog v-model="dialog" width="500">
-              <template v-slot:activator="{ on }">
-                <v-btn class="deep-purple mb-5" dark v-on="on">Add New todo</v-btn>
-              </template>
-              <v-card>
-                <v-card-title class="headline grey lighten-2" primary-title>Add a New todo</v-card-title>
-                <v-card-text>
-                  <v-form class="px-3">
-                    <v-text-field label="Title" v-model="newTodo" prepend-icon="folder"></v-text-field>
-                    <v-menu max-width="290">
-                      <template v-slot:activator="{ on }">
-                        <v-text-field
-                          :value="formattedDate"
-                          label="Due date"
-                          prepend-icon="mdi-calendar-range"
-                          v-on="on"
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker v-model="due"></v-date-picker>
-                    </v-menu>
-                    <v-btn flat class="deep-purple white--text" @click="addTodo">Add todo</v-btn>
-                  </v-form>
-                </v-card-text>
-              </v-card>
-            </v-dialog>
-          </div>
+          <Popup />
+          <input
+            type="text"
+            class="todo-input"
+            placeholder="Welcome, add your todo here!"
+            v-model="newTodo"
+            @keyup.enter="addTodo"
+          />
+        </v-flex>
+        <v-flex class="mb-5 ml-5">
+          <span class="mr-3">Due for:</span>
+          <input type="date" name id v-model="dueDate" />
         </v-flex>
       </v-layout>
       <v-layout row fluid wrap>
@@ -61,7 +46,7 @@
                   v-focus
                 />
                 <div class="grey--text">
-                  <input type="date" v-model="todo.due" />
+                  <input type="date" v-model="todo.dueDate" />
                 </div>
               </v-flex>
               <v-flex xs2></v-flex>
@@ -72,7 +57,7 @@
                   flat
                   small
                   dark
-                  color="purple"
+                  color="pink"
                   @click="removeTodo(index)"
                 >
                   <v-icon>delete_outline</v-icon>
@@ -108,38 +93,22 @@
 </template>
 
 <script>
-import format from "date-fns/format";
-import parseISO from "date-fns/parseISO";
+import Popup from "./Popup";
 
 export default {
   name: "todo-list",
   props: {
     msg: String
   },
-  components: {},
+  components: {
+    Popup
+  },
   data: function() {
     return {
       newTodo: "",
-      idForTodo: 1,
+      idForTodo: 3,
       beforeEditCache: "",
       filter: "all",
-      due: null,
-      todos: [
-        {
-          id: 1,
-          title: "krambababam",
-          completed: false,
-          editing: false,
-          due: "30th May 2020"
-        },
-        {
-          id: 2,
-          title: "task 2",
-          completed: false,
-          editing: false,
-          due: "20th May 2030"
-        }
-      ]
     };
   },
 
@@ -152,19 +121,23 @@ export default {
   },
   computed: {
     remaining() {
-      return this.$store.getters.remaining;
+      return this.todos.filter(todo => !todo.completed).length;
     },
     anyRemaining() {
-      return this.$store.getters.anyRemaining;
+      return this.remaining != 0;
     },
     todosFiltered() {
-      return this.$store.getters.todosFiltered;
+      if (this.filter == "all") {
+        return this.todos;
+      } else if (this.filter == "active") {
+        return this.todos.filter(todo => !todo.completed);
+      } else if (this.filter == "completed") {
+        return this.todos.filter(todo => todo.completed);
+      }
+      return this.todos;
     },
     showClearCompletedButton() {
-      return this.$store.getters.showClearCompletedButton;
-    },
-    formattedDate() {
-      return this.due ? format(parseISO(this.due), "do MMM yyyy") : "";
+      return this.todos.filter(todo => todo.completed).length > 0;
     }
   },
   methods: {
@@ -172,18 +145,19 @@ export default {
       if (this.newTodo.trim().length == 0) {
         return;
       }
-      this.$store.state.todos.push({
+      this.todos.push({
         id: this.idForTodo,
         title: this.newTodo,
         completed: false,
         editing: false,
-        due: this.due
+        due: "50th july 2000"
       });
+
       this.newTodo = "";
       this.idForTodo++;
     },
     removeTodo(index) {
-      this.$store.state.todos.splice(index, 1);
+      this.todos.splice(index, 1);
     },
     editTodo(todo) {
       this.beforeEditCache = todo.title;
@@ -200,18 +174,14 @@ export default {
       todo.editing = false;
     },
     checkAllTodos() {
-      this.$store.state.todos.forEach(
-        todo => (todo.completed = event.target.checked)
-      );
+      this.todos.forEach(todo => (todo.completed = event.target.checked));
     },
     clearCompleted() {
-      this.$store.state.todos = this.$store.state.todos.filter(
-        todo => !todo.completed
-      );
+      this.todos = this.todos.filter(todo => !todo.completed);
     }
     // TODO:sort functionality to be added
     //sortBy(prop){
-    //   this.$store.state.todos.sort()
+    //   this.todos.sort()
     // }
   }
 };

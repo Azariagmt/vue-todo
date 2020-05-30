@@ -5,7 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    theme: false,
+    theme: {
+      dark: true,
+    },
     filter: "all",
     todos: [
       {

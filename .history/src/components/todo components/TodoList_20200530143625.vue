@@ -125,20 +125,6 @@ export default {
       filter: "all",
       due: null,
       todos: [
-        {
-          id: 1,
-          title: "krambababam",
-          completed: false,
-          editing: false,
-          due: "30th May 2020"
-        },
-        {
-          id: 2,
-          title: "task 2",
-          completed: false,
-          editing: false,
-          due: "20th May 2030"
-        }
       ]
     };
   },

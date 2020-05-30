@@ -20,7 +20,7 @@
               </template>
               <v-date-picker v-model="due"></v-date-picker>
             </v-menu>
-            <v-btn flat class="purple" @click="addTodo">Add todo</v-btn>
+            <v-btn flat class="success" @click="add">Add todo</v-btn>
           </v-form>
         </v-card-text>
       </v-card>

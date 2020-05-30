@@ -13,9 +13,8 @@
         <template v-slot:activator="{ on }">
           <v-btn
             class="ml-2"
-            @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+            @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"
             v-on="on"
-            v-model="$vuetify.theme.dark"
           >
             <v-icon>flare</v-icon>
           </v-btn>

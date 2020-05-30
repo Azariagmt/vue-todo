@@ -5,7 +5,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    theme: false,
     filter: "all",
     todos: [
       {
@@ -28,8 +27,8 @@ export default new Vuex.Store({
     remaining(state) {
       return state.todos.filter((todo) => !todo.completed).length;
     },
-    anyRemaining(state, getters) {
-      return getters.remaining != 0;
+    anyRemaining(state) {
+      return this.remaining != 0;
     },
     todosFiltered(state) {
       if (state.filter == "all") {

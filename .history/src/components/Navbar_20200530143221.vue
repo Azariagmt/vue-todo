@@ -5,17 +5,17 @@
         <span class="font-weight-light">To</span>
         <span>do</span>
       </v-toolbar-title>
-      <v-btn class="ml-2">
+      <v-btn   @click="( this.$vuetify.theme.dark = true)" class="ml-2">
         <v-icon left>dashboard</v-icon>
         <span>Dashboard</span>
       </v-btn>
+      
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
             class="ml-2"
-            @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+            @click="{{ this.$vuetify.theme.dark = true}}"
             v-on="on"
-            v-model="$vuetify.theme.dark"
           >
             <v-icon>flare</v-icon>
           </v-btn>

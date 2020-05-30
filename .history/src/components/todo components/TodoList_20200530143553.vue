@@ -120,7 +120,7 @@ export default {
   data: function() {
     return {
       newTodo: "",
-      idForTodo: 1,
+      idForTodo: 3,
       beforeEditCache: "",
       filter: "all",
       due: null,

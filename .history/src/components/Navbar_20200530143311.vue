@@ -9,13 +9,15 @@
         <v-icon left>dashboard</v-icon>
         <span>Dashboard</span>
       </v-btn>
+      <v-toolbar color="primary" flat>
+        <v-switch v-model="$vuetify.theme.dark" hide-details inset label="Theme Dark"></v-switch>
+      </v-toolbar>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn
             class="ml-2"
-            @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+            @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"
             v-on="on"
-            v-model="$vuetify.theme.dark"
           >
             <v-icon>flare</v-icon>
           </v-btn>

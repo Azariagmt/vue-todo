@@ -120,7 +120,7 @@ export default {
   data: function() {
     return {
       newTodo: "",
-      idForTodo: 1,
+      idForTodo: 3,
       beforeEditCache: "",
       filter: "all",
       due: null,
@@ -130,7 +130,7 @@ export default {
           title: "krambababam",
           completed: false,
           editing: false,
-          due: "30th May 2020"
+          due: "05-20-2020"
         },
         {
           id: 2,
