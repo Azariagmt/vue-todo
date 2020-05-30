@@ -24,7 +24,7 @@
                       </template>
                       <v-date-picker v-model="due"></v-date-picker>
                     </v-menu>
-                    <v-btn flat class="deep-purple white--text" @click="addTodo" @keyup.enter="addTodo" @keyup.esc="{{ dialog= false}}">Add todo</v-btn>
+                    <v-btn flat class="deep-purple white--text" @click="addTodo" @keyup.enter="addTodo" @keyup.esc="{{}}">Add todo</v-btn>
                   </v-form>
                 </v-card-text>
               </v-card>
