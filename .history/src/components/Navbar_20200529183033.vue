@@ -9,17 +9,16 @@
         <v-icon left>dashboard</v-icon>
         <span>Dashboard</span>
       </v-btn>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn
-            class="ml-2"
-            @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"
-            v-on="on"
-          >
-            <v-icon>flare</v-icon>
-          </v-btn>
-        </template>
-        <span>Change theme</span>
+      <v-tooltip top>
+        <v-btn
+          slot="activator"
+          class="ml-2"
+          @click="this.$vuetify.theme.dark = !this.$vuetify.theme.dark"
+        >
+         
+          <v-icon>flare</v-icon>
+           <span>Change theme</span>
+        </v-btn>
       </v-tooltip>
 
       <v-spacer></v-spacer>

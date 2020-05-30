@@ -49,7 +49,9 @@
                   <input type="date" v-model="todo.dueDate" />
                 </div>
               </v-flex>
-              <v-flex xs2></v-flex>
+              <v-flex xs2>
+                
+              </v-flex>
               <v-flex xs2>
                 <v-btn
                   fab
@@ -93,14 +95,14 @@
 </template>
 
 <script>
-import Popup from "./Popup";
+import Popup from './Popup';
 
 export default {
   name: "todo-list",
   props: {
     msg: String
   },
-  components: {
+  components:{
     Popup
   },
   data: function() {
@@ -194,11 +196,11 @@ export default {
     },
     clearCompleted() {
       this.todos = this.todos.filter(todo => !todo.completed);
-    }
-    // TODO:sort functionality to be added
+    },
+    // TODO:sort functionality to be added 
     //sortBy(prop){
     //   this.todos.sort()
-    // }
+    // } 
   }
 };
 </script>

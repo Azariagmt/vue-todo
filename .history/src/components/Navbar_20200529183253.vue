@@ -9,7 +9,7 @@
         <v-icon left>dashboard</v-icon>
         <span>Dashboard</span>
       </v-btn>
-      <v-tooltip bottom>
+      <v-tooltip top>
         <template v-slot:activator="{ on }">
           <v-btn
             class="ml-2"

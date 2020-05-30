@@ -3,7 +3,6 @@
     <v-container class="ma-5 pa-5">
       <v-layout wrap row>
         <v-flex xs12 md12>
-          <Popup />
           <input
             type="text"
             class="todo-input"
@@ -45,11 +44,13 @@
                   @keyup.esc="cancelEdit(todo)"
                   v-focus
                 />
-                <div class="grey--text">
-                  <input type="date" v-model="todo.dueDate" />
-                </div>
               </v-flex>
-              <v-flex xs2></v-flex>
+              <v-flex xs2>
+                <div class="grey--text">
+                  input:
+                  v-model="todo.dueDate"
+                  </div>
+              </v-flex>
               <v-flex xs2>
                 <v-btn
                   fab
@@ -93,15 +94,10 @@
 </template>
 
 <script>
-import Popup from "./Popup";
-
 export default {
   name: "todo-list",
   props: {
     msg: String
-  },
-  components: {
-    Popup
   },
   data: function() {
     return {
@@ -115,7 +111,7 @@ export default {
           title: "krambababam",
           completed: false,
           editing: false,
-          dueDate: "05-20-2020"
+          dueDate: "20th jan 2030"
         },
         {
           id: 2,
@@ -195,10 +191,6 @@ export default {
     clearCompleted() {
       this.todos = this.todos.filter(todo => !todo.completed);
     }
-    // TODO:sort functionality to be added
-    //sortBy(prop){
-    //   this.todos.sort()
-    // }
   }
 };
 </script>

@@ -3,7 +3,6 @@
     <v-container class="ma-5 pa-5">
       <v-layout wrap row>
         <v-flex xs12 md12>
-          <Popup />
           <input
             type="text"
             class="todo-input"
@@ -11,10 +10,7 @@
             v-model="newTodo"
             @keyup.enter="addTodo"
           />
-        </v-flex>
-        <v-flex class="mb-5 ml-5">
-          <span class="mr-3">Due for:</span>
-          <input type="date" name id v-model="dueDate" />
+         <span> Due for:</span><input type="date" name="" id="">
         </v-flex>
       </v-layout>
       <v-layout row fluid wrap>
@@ -45,11 +41,10 @@
                   @keyup.esc="cancelEdit(todo)"
                   v-focus
                 />
-                <div class="grey--text">
-                  <input type="date" v-model="todo.dueDate" />
-                </div>
               </v-flex>
-              <v-flex xs2></v-flex>
+              <v-flex xs2>
+                <div class="grey--text">{{todo.due}}</div>
+              </v-flex>
               <v-flex xs2>
                 <v-btn
                   fab
@@ -81,11 +76,14 @@
       <div class="extra-container">
         <v-btn :class="{ active: filter == 'all' }" @click="filter='all'">All</v-btn>
         <v-btn :class="{ active: filter == 'active' }" @click="filter='active'">Active</v-btn>
-        <v-btn :class="{ active: filter == 'completed' }" @click="filter='completed'">Completed</v-btn>
+        <v-btn
+          :class="{ active: filter == 'completed' }"
+          @click="filter='completed'"
+        >Completed</v-btn>
       </div>
       <div>
         <transition name="fade">
-          <v-btn v-if="showClearCompletedButton" @click="clearCompleted">Clear Completed</v-btn>
+        <v-btn v-if="showClearCompletedButton" @click="clearCompleted">Clear Completed</v-btn>
         </transition>
       </div>
     </v-container>
@@ -93,15 +91,10 @@
 </template>
 
 <script>
-import Popup from "./Popup";
-
 export default {
   name: "todo-list",
   props: {
     msg: String
-  },
-  components: {
-    Popup
   },
   data: function() {
     return {
@@ -115,14 +108,14 @@ export default {
           title: "krambababam",
           completed: false,
           editing: false,
-          dueDate: "05-20-2020"
+          due: "20th jan 2030"
         },
         {
           id: 2,
           title: "task 2",
           completed: false,
           editing: false,
-          dueDate: "20th jan 2030"
+          due: "20th jan 2030"
         }
       ]
     };
@@ -143,12 +136,12 @@ export default {
       return this.remaining != 0;
     },
     todosFiltered() {
-      if (this.filter == "all") {
-        return this.todos;
-      } else if (this.filter == "active") {
-        return this.todos.filter(todo => !todo.completed);
-      } else if (this.filter == "completed") {
-        return this.todos.filter(todo => todo.completed);
+      if (this.filter == 'all') {
+        return this.todos
+      } else if (this.filter == 'active') {
+        return this.todos.filter(todo => !todo.completed)
+      } else if (this.filter == 'completed') {
+        return this.todos.filter(todo => todo.completed)
       }
       return this.todos;
     },
@@ -190,15 +183,11 @@ export default {
       todo.editing = false;
     },
     checkAllTodos() {
-      this.todos.forEach(todo => (todo.completed = event.target.checked));
+      this.todos.forEach((todo) => todo.completed = event.target.checked)
     },
     clearCompleted() {
-      this.todos = this.todos.filter(todo => !todo.completed);
+      this.todos = this.todos.filter(todo => !todo.completed)
     }
-    // TODO:sort functionality to be added
-    //sortBy(prop){
-    //   this.todos.sort()
-    // }
   }
 };
 </script>
