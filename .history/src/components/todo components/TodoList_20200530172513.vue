@@ -119,7 +119,6 @@ export default {
   components: {},
   data: function() {
     return {
-      dialog: false,
       newTodo: "",
       idForTodo: 1,
       beforeEditCache: "",
@@ -182,7 +181,6 @@ export default {
       });
       this.newTodo = "";
       this.idForTodo++;
-      this.dialog = false;
     },
     removeTodo(index) {
       this.$store.state.todos.splice(index, 1);

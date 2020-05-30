@@ -24,7 +24,7 @@
                       </template>
                       <v-date-picker v-model="due"></v-date-picker>
                     </v-menu>
-                    <v-btn flat class="deep-purple white--text" @click="addTodo">Add todo</v-btn>
+                    <v-btn flat class="deep-purple white--text" @click="addTodo" @click="dialog= false">Add todo</v-btn>
                   </v-form>
                 </v-card-text>
               </v-card>
@@ -182,7 +182,7 @@ export default {
       });
       this.newTodo = "";
       this.idForTodo++;
-      this.dialog = false;
+      this.dialog = 
     },
     removeTodo(index) {
       this.$store.state.todos.splice(index, 1);
